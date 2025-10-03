@@ -14,24 +14,14 @@ import { auth } from "./firbase";
 export function UserAuthContextProvider( props ) {
     const [user, setUser] = useState({});
 
-    function logIn(email, password) {
-        return signInWithEmailAndPassword(auth, email, password);
-    }
-    function signUp(email, password) {
-        
-         createUserWithEmailAndPassword(auth, email, password)
-         .then((userCredential) => {
-            // Signed up 
-            const user = userCredential.user;
-            // ...
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode,errorMessage)
-            // ..
-          });
-    }
+        function signUp(email, password) {
+            // Return the promise so callers can handle success/errors consistently
+            return createUserWithEmailAndPassword(auth, email, password);
+        }
+
+        function logIn(email, password) {
+            return signInWithEmailAndPassword(auth, email, password);
+        }
     function logOut() {
         return signOut(auth);
     }

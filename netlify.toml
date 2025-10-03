@@ -1,0 +1,9 @@
+[build]
+  # Build command: install dependencies and build the Create React App inside the twiller folder
+  command = "npm --prefix twiller run build"
+  # Publish the build output directory
+  publish = "twiller/build"
+
+[context.production.environment]
+  # Example: set your API base URL here in Netlify dashboard instead of committing secrets
+  # REACT_APP_API_URL = "https://your-backend.example.com"
